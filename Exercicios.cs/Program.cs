@@ -34,9 +34,9 @@ Console.WriteLine($"A média de {nomeAluno} é: {media}");
 
 
 
-/*
+
 // Exercício 2:
-Dictionary<string, int> estoque = new Dictionary<string, int>();
+Dictionary<string, int> estoque = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
 
 void menu()
@@ -87,10 +87,10 @@ void AdicionarQuantidade()
     string produtoAdicionar = Console.ReadLine()!;
 
     // Nota: Não usar laço for para procurar por uma chave! - Aumenta MUITO o custo de processamento
-     if (estoque.ContainsKey(produtoAdicionar))
+     if (estoque.TryGetValue(produtoAdicionar, out var valor))
      {
 
-        int valor = estoque[produtoAdicionar];
+        //int valor = estoque[produtoAdicionar];
         Console.WriteLine($"\nAtualmente {produtoAdicionar} possui {valor} itens em estoque");
         Console.Write("Quanto deseja adicionar ao estoque? ");
         int valorAdicionado = int.Parse(Console.ReadLine()!);
@@ -116,10 +116,10 @@ void ReduzirQuantidade()
     string produtoReduzir = Console.ReadLine()!;
 
 
-    if (estoque.ContainsKey(produtoReduzir))
+    if (estoque.TryGetValue(produtoReduzir, out var valor))
     {
 
-        int valor = estoque[produtoReduzir];
+        //int valor = estoque[produtoReduzir];
         Console.WriteLine($"\nAtualmente {produtoReduzir} possui {valor} itens em estoque");
         Console.Write("Quanto deseja reduzir do estoque? ");
         int valorReduzido = int.Parse(Console.ReadLine()!);
@@ -155,7 +155,7 @@ void VisualizarEstoque()
 menu();
 
 
-
+/*
 // Exercício 3 - Quiz de perguntas e respostas
 
 Dictionary<string, string> AeQ = new Dictionary<string, string>();
@@ -187,7 +187,7 @@ foreach (var pergunta in AeQ)
 
 Console.WriteLine($"Quiz finalizado! Sua pontuação foi de: {pontos}/5");
 */
-
+/*
 // Exercício 4 - Login
 
 Dictionary<string, string> infoLogin  = new Dictionary<string, string>();
