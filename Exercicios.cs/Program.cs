@@ -46,6 +46,7 @@ void menu()
     Console.WriteLine("Digite 2 para adicionar quantidade do estoque");
     Console.WriteLine("Digite 3 para reduzir quantidade do estoque");
     Console.WriteLine("Digite 4 visualizar o estoque");
+    Console.WriteLine("Digite -1 para sair.");
     Console.Write("Digite um número para seguir com uma ação: ");
     int acaoEscolhida = int.Parse(Console.ReadLine()!);
 
@@ -67,23 +68,44 @@ void menu()
         case 4:
             VisualizarEstoque();
             break;
+
+        case -1:
+            Console.WriteLine("Saindo...");
+            Thread.Sleep(1000);
+            break;
     }
 
 };
 
 
-void NovaChave()
+void ExibirTituloDaOpcao(string titulo)
 {
-    Console.Write("\nDigite o nome do produto que deseja adicionar: ");
+    int quantidadeDeLetras = titulo.Length;
+    string asteriscos = string.Empty.PadLeft(quantidadeDeLetras, '*');
+    Console.WriteLine(asteriscos);
+    Console.WriteLine(titulo);
+    Console.WriteLine(asteriscos + "\n");
+}
+
+
+    void NovaChave()
+{
+    Console.Clear();
+    ExibirTituloDaOpcao("Adicionar um novo produto ao estoque");
+    Console.Write("Digite o nome do produto que deseja adicionar: ");
     string nomeProduto = Console.ReadLine()!;
     estoque.Add(nomeProduto, 0);
     Console.WriteLine($"Produto {nomeProduto} adicionado com sucesso!\n");
+    Thread.Sleep(1000);
+    Console.Clear();
     menu();
 }
 
 void AdicionarQuantidade()
 {
-    Console.Write("\nDigite o nome do produto que houve recebimento: ");
+    Console.Clear();
+    ExibirTituloDaOpcao("Adicionar quantidade de um produto ao estoque");
+    Console.Write("Digite o nome do produto que houve recebimento: ");
     string produtoAdicionar = Console.ReadLine()!;
 
     // Nota: Não usar laço for para procurar por uma chave! - Aumenta MUITO o custo de processamento
@@ -106,13 +128,17 @@ void AdicionarQuantidade()
            Console.WriteLine("Esse produto ainda não existe no estoque");
        }
 
+    Thread.Sleep(1500);
+    Console.Clear();
     menu();
 }
 
 
 void ReduzirQuantidade()
 {
-    Console.Write("\nDigite o nome do produto que foi vendido: ");
+    Console.Clear();
+    ExibirTituloDaOpcao("Reduzir quantidade de um produto do estoque");
+    Console.Write("Digite o nome do produto que foi vendido: ");
     string produtoReduzir = Console.ReadLine()!;
 
 
@@ -135,13 +161,15 @@ void ReduzirQuantidade()
         Console.WriteLine("Esse produto ainda não existe no estoque");
     }
 
+    Thread.Sleep(1500);
+    Console.Clear();
     menu();
 }
 
 void VisualizarEstoque()
 {
     Console.Clear();
-    Console.WriteLine("\nEstoque atual:\n");
+    ExibirTituloDaOpcao("Estoque Atual");
     foreach (var item in estoque)
     {
         Console.WriteLine($"Produto: {item.Key}, Quantidade: {item.Value}");
@@ -149,6 +177,7 @@ void VisualizarEstoque()
 
     Console.WriteLine("Digite qualquer tecla para voltar ao menu!");
     Console.ReadKey();
+    Console.Clear();
     menu();
 }
 
@@ -244,4 +273,4 @@ void FazendoLogin()
 
 
 
-FazendoLogin();
+FazendoLogin();*/
